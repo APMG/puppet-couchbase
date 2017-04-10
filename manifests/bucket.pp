@@ -51,6 +51,7 @@ define couchbase::bucket (
   $replica         = 1,
   $bucket_password = undef,
   $flush           = 0,
+  $debug_output    = false,
 ) {
 
   include ::couchbase::params
@@ -76,7 +77,7 @@ define couchbase::bucket (
       unless    => "couchbase-cli bucket-list -c 127.0.0.1 -u ${user} -p '${password}' | grep -x ${bucketname}",
       require   => Class['couchbase::config'],
       returns   => [0, 2],
-      logoutput => true,
+      logoutput => $debug_output,
     }
   }
   else {
