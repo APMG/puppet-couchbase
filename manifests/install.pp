@@ -37,7 +37,7 @@ class couchbase::install (
 
   $pkg_package = $edition ? {
         'enterprise' => 'couchbase-server-enterprise',
-        default      => 'couchbase-server-community',
+        default      => 'couchbase-server',
     }
 
   case $method {
