@@ -26,8 +26,8 @@ class couchbase::params {
   $data_dir               = '/opt/couchbase/var/lib/couchbase/data'
   $moxi_port              = '11311'
   $moxi_version           = '2.5.0'
-  $packagename_enterprise = 'couchbase-server-enterprise'
-  $packagename_community  = 'couchbase-server-community'
+  $packagename_enterprise = hiera('couchbase::params::packagename_enterprise', 'couchbase-server-enterprise')
+  $packagename_community  = hiera('couchbase::params::packagename_community', 'couchbase-server-community')
 
   case $::osfamily {
     /(?i:centos|redhat|scientific)/: {
