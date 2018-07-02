@@ -38,10 +38,10 @@ class couchbase::install (
   $pkg_package = $edition ? {
     'enterprise' => "${version} ${method} ${::couchbase::params::installer}" ? {
       '4.6.2 curl rpm' => 'couchbase-server',
-      default => 'couchbase-server-enterprise',
+      default => $::couchbase::params::packagename_enterprise,
     },
 
-    default      => 'couchbase-server-community',
+    default      => $::couchbase::params::packagename_community,
   }
 
   case $method {
